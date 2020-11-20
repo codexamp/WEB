@@ -2,67 +2,57 @@
 <html>
 <head>
 	<title>Block notes</title>
-	<link rel="stylesheet" type="text/css" href="block_content_style.css">
+	<link rel="stylesheet" type="text/css" href="note-style.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-	<div class="flex">
-		<div class="block-content">
-		 	<div class="content-top-green">
-		 		Buy milk
-		 	</div>
-		 	<div class="content-bottom">
-		 		After school go to shop
-		 	</div>
+	<div class="base-block">
+		<div class="flex">
+			<div class="circle"></div>
+			<div class="user-note">
+				<h1>User name</h1>
+				This is where I plan my affairs ahead.<br>
+				Also my notes
+			</div>
 		</div>
-
-		<div class="block-content">
-		 	<div class="content-top-blue">
-		 		Wash the car
-		 	</div>
-		 	<div class="content-bottom">
-		 		Just do it<br>
-				I must do it
-		 	</div>
-		</div>
-
-		<div class="block-content">
-		 	<div class="content-top-red">
-		 		I forgot
-		 	</div>
-		 	<div class="content-bottom">
-		 		Really
-		 	</div>
-		</div>
-	</div>
-
-
-	<div class="flex">
-		<div class="block-content">
-		 	<div class="content-top-f">
-		 		Do homework
-		 	</div>
-		 	<div class="content-bottom">
-		 		Do your homework on history
-		 	</div>
-		</div>
-		<div class="block-content">
-		 	<div class="content-top-yellow">
-		 		Go to mom tomorrow
-		 	</div>
-		 	<div class="content-bottom">
-		 		my mother called me and said I had to go to her
-		 	</div>
-		</div>
-		<div class="block-content">
-		 	<div class="content-top-l">
-		 		Clean up at home
-		 	</div>
-		 	<div class="content-bottom">
-		 		Guests will come tomorrow, so clean up
-		 	</div>
+		<h2 id="text-center">Tasks</h2>
+		<div class="flex">
+			<div class="block-content">
+				<div class="content-top-gray">
+					Go to the store
+					<div class="indecator-red"></div>
+				</div>
+				<div class="content-bottom">
+					After work, buy groceries for dinner
+					<div class="content-bottom-date">
+						21.11.2020
+					</div>
+				</div>
+			</div>
+			<div class="block-content">
+				<div class="content-top-gray">
+					Go to the store
+					<div class="indecator-blue"></div>
+				</div>
+				<div class="content-bottom">
+					After work, buy groceries for dinner
+					<div class="content-bottom-date">
+						22.11.2020
+					</div>
+				</div>
+			</div>
+			<div class="block-content">
+				<div class="content-top-gray">
+					Go to the store
+				</div>
+				<div class="content-bottom">
+					After work, buy groceries for dinner
+					<div class="content-bottom-date">
+						25.11.2020
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
 </body>
 </html>
