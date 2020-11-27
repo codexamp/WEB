@@ -1,0 +1,61 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif;
+  color: white;
+}
+body {
+  background-color: #35343A;
+}
+
+.sign-up-block {
+  padding: 20px 40px 50px 40px;
+  margin: 50px auto;
+  width: 400px;
+  text-align: center;
+  background: rgba(91,91,92, 0.4);
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.sign-up-block input {
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  background-color: #5C5B62;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border-radius: 100px;
+}
+
+.sign-up-block input:focus {
+  position: relative;
+  top: -5px;
+  box-shadow: 2px 10px 7px rgba(0,0,0,0.3);
+}
+.password-field {
+  letter-spacing: 5px;
+}
+
+.sign-up-block h2 {
+  margin: 20px;
+  letter-spacing: 1px;
+}
+
+.sign-up-block button {
+  margin-top: 40px;
+  outline: none;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  background-color: #5C5B62;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border-radius: 100px;
+  width: 160px;
+}
+.sign-up-block button:focus {
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
