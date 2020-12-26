@@ -1,0 +1,32 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #202124;
+}
+.block-icons {
+  display: flex;
+  position: relative;
+}
+.icon {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon i {
+  font-size: 24px;
+}
+.fa-instagram {
+  color: #FF31BA;
+}
+.fa-telegram {
+  color: #00A1FF;
+}
+.fa-twitter {
+  color: #1DA1F2;
+}
+.fa-github {
+  color: #fff;
+}
