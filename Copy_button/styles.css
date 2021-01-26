@@ -14,48 +14,51 @@ body {
   background: #36393F;
 }
 
+.copy-constainer {
+  display: flex;
+  align-items: center;
+}
 .copy-btn {
-  transition: 0.3s;
   position: relative;
-  background: #1E2023;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 1);
-  border: none;
-  outline: none;
-  border-radius: 5px;
-  width: 100px;
-  height: 40px;
-  font-weight: bold;
-  font-size: 20px;
-}
-.copy-btn:focus {
-  transition: 0.3s;
   background: black;
-  box-shadow: none;
+  outline: none;
+  border: none;
+  border-radius: 7px;
+  width: 120px;
+  height: 45px;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 3px;
 }
-.copy-btn p {
+.copy-btn:hover .btn-hover circle {
+  transition: 1s;
+  cy: 20;
+  r: 40px;
+  fill: #78EBF1;
+}
+.btn-hover circle {
+  transition: 1s;
+  cy: 100;
+}
+.btn-hover {
+  transition: 1s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  fill: rgb(0, 247, 255);
+}
+.btn-text {
   position: relative;
   z-index: 3;
 }
-.text {
-  margin-left: 30px;
-  font-size: 20px;
+.copy-btn:hover .btn-text{
+  transition: 1s;
+  color: rgb(0, 0, 0);
 }
 
-.copy-message {
-  position: absolute;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  width: 250px;
-  height: 110px;
-  background: rgb(110,255,168);
-  background: -moz-linear-gradient(163deg, rgba(110,255,168,1) 0%, rgba(80,201,129,1) 100%);
-  background: -webkit-linear-gradient(163deg, rgba(110,255,168,1) 0%, rgba(80,201,129,1) 100%);
-  background: linear-gradient(163deg, rgba(110,255,168,1) 0%, rgba(80,201,129,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#6effa8",endColorstr="#50c981",GradientType=1);
-  backdrop-filter: blur(3px);
-  border-radius: 10px;
-
-  font-size: 25px;
-  z-index: 10;
+.text-copy {
+  margin-left: 30px;
+  font-size: 20px;
 }
