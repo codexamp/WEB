@@ -1,8 +1,6 @@
 let copyBtn = document.querySelector('.copy-btn');
-let text = document.querySelector('.text-copy').innerText;
-let message = document.querySelector('.copy-message');
-
+let articleCopyText = document.querySelector('.text-copy').innerText;
 
 copyBtn.addEventListener('click', function() {
-  navigator.clipboard.writeText(text);
+  navigator.clipboard.writeText(articleCopyText);
 });
