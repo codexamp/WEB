@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <style media="screen">
+        * {
+          color: #fff;
+        }
+        html[data-theme="dark"] {
+            --color-dark: #050A17;
+        }
+        html[data-theme="light"] {
+            --color-dark: white;
+        }
+
+        body {
+          transition: 0.3s;
+          background: var(--color-dark);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+        }
+
+        .block {
+          background: gray;
+        }
+
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 60px;
+          height: 34px;
+        }
+        .switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 26px;
+          width: 26px;
+          left: 4px;
+          bottom: 4px;
+          background-color: white;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+
+        input:checked + .slider {
+          background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+          box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+          -webkit-transform: translateX(26px);
+          -ms-transform: translateX(26px);
+          transform: translateX(26px);
+        }
+        .slider.round {
+          border-radius: 34px;
+        }
+
+        .slider.round:before {
+          border-radius: 50%;
+        }
+    </style>
+    <form>
+      <label class="switch">
+          <input type="checkbox" data-theme-switch>
+          <span class="slider round"></span>
+      </label>
+    </form>
+
+    <script>
+      // switch theme class
+      class ChangeTheme {
+          constructor() {
+              this.switcherTheme = document.querySelector('input[data-theme-switch]');
+              this.dataTheme = document.querySelector('html');
+          }
+
+          checkTheme() {
+              if (this.getCookie('theme') == 'dark') {
+                  this.switcherTheme.checked = true;
+                  document.cookie = 'theme=dark; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT'
+                  this.dataTheme.setAttribute('data-theme', 'dark')
+              }
+              else if (this.getCookie('theme') == 'light') {
+                  this.switcherTheme.checked = false;
+                  document.cookie = 'theme=light; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT'
+                  this.dataTheme.setAttribute('data-theme', 'light')
+              }
+          }
+
+          setTheme() {
+              if (this.getCookie('theme') == 'dark') {
+                  this.switcherTheme.checked = true;
+              }
+              else if (this.getCookie('theme') == 'light') {
+                  this.switcherTheme.checked = false;
+              }
+              this.switcherTheme.addEventListener('input', set => {
+                  if (this.switcherTheme.checked) {
+                      document.cookie = 'theme=dark; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT'
+                      this.dataTheme.setAttribute('data-theme', 'dark')
+                  }
+                  else {
+                      document.cookie = 'theme=light; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT'
+                      this.dataTheme.setAttribute('data-theme', 'light')
+                  }
+              })
+          }
+
+          getCookie(name) {
+              var matches = document.cookie.match(new RegExp( "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)" ));
+              return matches ? decodeURIComponent(matches[1]) : undefined;
+          }
+      }
+
+      let el = new ChangeTheme;
+      el.checkTheme()
+      el.setTheme()
+    </script>
+</body>
+</html>
