@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        * {
+            color: #fff;
+        }
+        html[data-theme="dark"] {
+            --color-dark: #050A17;
+        }
+        html[data-theme="light"] {
+            --color-dark: #ffffff;
+        }
+
+        body {
+            transition: 0.4s;
+            background: var(--color-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .theme-switcher {
+            position: relative;
+            transition: 1s;
+            display: flex;
+            align-items: center;
+            width: 95px;
+            height: 50px;
+            overflow: hidden;
+            border-radius: 30px;
+        }
+        .theme-light-bg {
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgb(37,181,224);
+            background: linear-gradient(180deg, rgba(37,181,224,0.8158613787311799) 0%, rgba(37,181,224,1) 100%);
+            border-radius: 30px;
+        }
+        .theme-dark-bg {
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgb(17,39,91);
+            background: linear-gradient(0deg, rgba(17,39,91,1) 0%, rgba(22,48,107,1) 100%);
+        }
+        .theme-switcher input {
+            display: none;
+        }
+        .slider {
+            position: relative;
+            display: block;
+            left: 9px;
+            transition: .4s;
+            width: 35px;
+            height: 35px;
+            background: rgb(255,255,255);
+            background: linear-gradient(0deg, rgba(255,255,255,1) 35%, rgba(255,255,255,0.46852244315695024) 100%);
+            border-radius: 30px;
+            overflow: hidden;
+            z-index: 3;
+        }
+        .theme-switcher input:checked + .slider {
+            -webkit-transform: translateX(41px);
+            -ms-transform: translateX(41px);
+            transform: translateX(41px);
+        }
+
+        .theme-switcher-star {
+            position: absolute;
+            transition: 0.5s;
+            top: 10px;
+            left: 13px;
+            z-index: 2;
+        }
+        .theme-switcher-cloud {
+            position: absolute;
+            transition: 0.5s;
+            top: 15px;
+            right: 15px;
+            z-index: 4;
+        }
+    </style>
+    <form>
+        <label class="theme-switcher">
+            <div class="theme-light-bg"></div>
+            <div class="theme-dark-bg"></div>
+            <input type="checkbox" data-theme-switch>
+            <span class="slider"></span>
+            <svg class="theme-switcher-star" width="10" height="10" viewBox="0 0 100 100">
+                <defs><style>.mini-star{fill:#fff;}</style></defs>
+                <polygon class="mini-star" points="98 50.38 59.73 40.24 59.73 40.2 59.7 40.2 49.71 1.94 39.58 40.2 39.54 40.2 39.54 40.24 1.28 50.38 39.54 60.36 39.54 60.4 39.7 60.4 49.71 98.21 59.58 60.4 59.73 60.4 59.73 60.36 98 50.38"/>
+            </svg>
+            <svg class="theme-switcher-cloud" width="30" height="30" viewBox="0 0 344.01 195.98">
+                <defs><style>.cls-1{fill:#ffffff;}</style></defs>
+                <path class="cls-1" d="M344,125.77A70.22,70.22,0,0,1,273.8,196H70.34A70.35,70.35,0,0,1,66.83,55.37a55.47,55.47,0,0,1,79-34.21A74.72,74.72,0,0,1,270.19,55.65c1.19-.06,2.4-.09,3.61-.09A70.21,70.21,0,0,1,344,125.77Z"/>
+            </svg>
+        </label>
+    </form>
+
+    <script>
+        class TehmeSwitcher {
+            constructor(switcheName) {
+                let switcher = document.querySelector(switcheName + ' input'),
+                    secondBG = document.querySelectorAll(switcheName + ' div'),
+                    animateTheme = document.querySelector(switcheName),
+                    themeStar = document.querySelector(switcheName + ' .theme-switcher-star'),
+                    themeCloud = document.querySelector(switcheName + ' .theme-switcher-cloud');
+
+
+                if (switcher.checked) {
+                    secondBG[0].style.opacity = 0
+                    secondBG[1].style.opacity = 1
+                    themeCloud.style.opacity = 0
+                    themeStar.style.opacity = 1
+                }
+                else if (!switcher.checked) {
+                    secondBG[1].style.opacity = 0
+                    secondBG[0].style.opacity = 1
+                    themeCloud.style.opacity = 1
+                    themeStar.style.opacity = 0
+                }
+
+                setTimeout(setTransition => {
+                    secondBG[0].style.transition = '1s'
+                secondBG[1].style.transition = '1s'
+                }, 100)
+
+                switcher.addEventListener('input', function() {
+                    if (switcher.checked) {
+                        secondBG[0].style.opacity = 0
+                        secondBG[1].style.opacity = 1
+                        themeCloud.style.opacity = 0
+                        themeStar.style.opacity = 1
+                    }
+                    else if (!switcher.checked) {
+                        secondBG[1].style.opacity = 0
+                        secondBG[0].style.opacity = 1
+                        themeCloud.style.opacity = 1
+                        themeStar.style.opacity = 0
+                    }
+                })
+            }
+        }
+
+
+        // switch theme class
+        class ChangeTheme {
+            constructor() {
+                this.switcherTheme = document.querySelector('input[data-theme-switch]');
+                this.dataTheme = document.querySelector('html');
+            }
+
+            checkTheme() {
+                if (this.getCookie('theme') == 'dark') {
+                    this.switcherTheme.checked = true;
+                    document.cookie = 'theme=dark; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT'
+                    this.dataTheme.setAttribute('data-theme', 'dark')
+                }
+                else if (this.getCookie('theme') == 'light') {
+                    this.switcherTheme.checked = false;
+                    document.cookie = 'theme=light; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT'
+                    this.dataTheme.setAttribute('data-theme', 'light')
+                }
+            }
+
+            setTheme() {
+                if (this.getCookie('theme') == 'dark') {
+                    this.switcherTheme.checked = true;
+                }
+                else if (this.getCookie('theme') == 'light') {
+                    this.switcherTheme.checked = false;
+                }
+                this.switcherTheme.addEventListener('input', set => {
+                    if (this.switcherTheme.checked) {
+                        document.cookie = 'theme=dark; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT'
+                        this.dataTheme.setAttribute('data-theme', 'dark')
+                    }
+                    else {
+                        document.cookie = 'theme=light; path=/; expires=Fri, 31 Dec 9999 23:59:59 GMT'
+                        this.dataTheme.setAttribute('data-theme', 'light')
+                    }
+                })
+            }
+
+            getCookie(name) {
+                var matches = document.cookie.match(new RegExp( "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)" ));
+                return matches ? decodeURIComponent(matches[1]) : undefined;
+            }
+        }
+
+        let change = new ChangeTheme;
+        change.checkTheme()
+        change.setTheme()
+
+        let sv = new TehmeSwitcher('.theme-switcher');
+    </script>
+</body>
+</html>
